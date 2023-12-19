@@ -71,7 +71,7 @@ userSchema.methods.generateAccessToken = async function(){
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
-        expiresIn : ACCESS_TOKEN_EXPIRY
+        expiresIn : process.env.ACCESS_TOKEN_EXPIRY
     }
     )
 }
@@ -79,7 +79,7 @@ userSchema.methods.generateAccessToken = async function(){
 userSchema.methods.generateRefreshToken = async function(){
     return sign(
         {
-        _id: _id
+        _id: this._id
     },
     process.env.REFRESH_TOKEN_SECRET,
     {
